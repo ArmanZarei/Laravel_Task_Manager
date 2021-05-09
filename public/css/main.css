@@ -49,3 +49,16 @@
 .modal-title-icon {
     font-size: 25px;
 }
+#no-tasks {
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -ms-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+.active-no-task {
+    opacity: 1;
+}
+.inactive-no-task {
+    opacity: 0;
+}

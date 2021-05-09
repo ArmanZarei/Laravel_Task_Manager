@@ -38,6 +38,7 @@
                     </li>
                 @endforeach
             </ul>
+            <p class="alert alert-danger p-2 text-center {{ sizeof($tasks) ? 'inactive-no-task' : 'active-no-task' }}" id="no-tasks">No Tasks</p>
         </div>
     </div>
 </div>
@@ -94,6 +95,8 @@
                     success: function (data) {
                         taskContainer.slideUp(300, function(){
                             $(this).remove();
+                            if ($(".single-task").length == 0)
+                                $("#no-tasks").removeClass('inactive-no-task').addClass('active-no-task');
                         });
                     },
                     error: function () {
