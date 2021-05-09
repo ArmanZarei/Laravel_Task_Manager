@@ -1,0 +1,44 @@
+.tasks-manager-icons {
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+}
+#add-task {
+    font-size: 24px;
+    cursor: pointer;
+}
+#reload-tasks {
+    font-size: 20px;
+    margin: 2px 5px;
+    cursor: pointer;
+}
+.task-check {
+    font-size: 25px;
+    cursor: pointer;
+}
+.edit-task {
+    font-size: 19px;
+    margin: 1px 3px;
+    cursor: pointer;
+    opacity: 0;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -ms-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+.single-task:hover .edit-task {
+    opacity: 1;
+}
+.completed-task {
+    color: #27ae60;
+}
+.pending-task {
+    color: #bdc3c7;
+}
+.single-task:hover {
+    background: #f8f8f8;
+}
+.modal-title-icon {
+    font-size: 25px;
+}
