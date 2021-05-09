@@ -24,7 +24,7 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  UpdateTaskRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CreateTaskRequest $request)
@@ -33,13 +33,13 @@ class TaskController extends Controller
             'title' => $request->get('title'),
         ]);
 
-        return $task;
+        return response()->json($task);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  UpdateTaskRequest  $request
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
@@ -51,7 +51,7 @@ class TaskController extends Controller
             $task->done = $request->input('done');
         $task->save();
 
-        return $task;
+        return response()->json($task);
     }
 
     /**
@@ -62,6 +62,8 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+
+        return response()->json("OK");
     }
 }
