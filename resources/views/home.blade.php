@@ -29,9 +29,10 @@
             <ul class="list-group">
                 @foreach($tasks as $task)
                     <li class="list-group-item d-flex justify-content-between align-items-center single-task">
-                        <div class="">
+                        <div class="d-flex align-middle">
                             <span>{{ $task->title }}</span>
-                            <i class="fal fa-edit edit-task text-secondary" data-tid="{{ $task->id }}"></i>
+                            <i class="fal fa-edit edit-task task-action-btn text-secondary" data-tid="{{ $task->id }}"></i>
+                            <i class="far fa-trash-alt task-action-btn delete-task" data-tid="{{ $task->id }}"></i>
                         </div>
                         <i class="fal fa-check-circle task-check {{ $task->done ? 'completed-task' : 'pending-task' }}" data-tid="{{ $task->id }}"></i>
                     </li>
@@ -80,6 +81,20 @@
                     },
                     success: function (data) {
                         elemToToggle.toggleClass('completed-task pending-task');
+                    },
+                    error: function () {
+                        swal("Error", "Something went wrong!", "error");
+                    }
+                });
+            },
+            deleteTask(taskId, taskContainer) {
+                $.ajax({
+                    url: this.taskAPI + "/" + taskId,
+                    method: 'DELETE',
+                    success: function (data) {
+                        taskContainer.slideUp(300, function(){
+                            $(this).remove();
+                        });
                     },
                     error: function () {
                         swal("Error", "Something went wrong!", "error");
@@ -144,6 +159,11 @@
             const $this = $(this);
             modalManager.prepareTaskEdit($this.data("tid"), $this.siblings('span').text());
             modal.show();
+        });
+
+        $(".delete-task").on('click', function (e) {
+            const $this = $(this);
+            taskManager.deleteTask($this.data("tid"), $this.closest('.single-task'));
         });
     });
 </script>
