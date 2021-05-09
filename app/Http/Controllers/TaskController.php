@@ -16,7 +16,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::orderBy('done')->orderBy('updated_at', 'DESC')->get();
 
         return view('home', compact('tasks'));
     }
