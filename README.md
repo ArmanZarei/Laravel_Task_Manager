@@ -11,4 +11,6 @@
     ```
 
 ### App
-![App image](https://github.com/[username]/[reponame]/public/[branch]/image.jpg?raw=true)
+<p align="center">
+  <img src="https://github.com/ArmanZarei/Laravel_Task_Manager/blob/master/public/images/TaskManager.png">
+</p>
