@@ -17,6 +17,12 @@
     <div class="row justify-content-center mt-5">
         <div class="col-4">
             <div class="text-center position-relative">
+                @auth('web')
+                    Hello {{ Auth::user()->fullname }}
+                    <a href="{{ route('logout') }}">logout</a>
+                @else
+                    <a href="{{ route('login') }}">Login</a>
+                @endauth
                 <h2 class="text-success">
                     <i class="fad fa-tasks"></i> Tasks
                 </h2>
