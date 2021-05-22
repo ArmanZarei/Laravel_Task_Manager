@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ForgotPasswordRequest;
 use App\Http\Requests\ResetPasswordRequest;
 use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -33,7 +33,7 @@ class ForgotPasswordController extends Controller
 
     public function resetPassword(Request $request, $token)
     {
-        return view('reset-password', compact('token'), ['email' => $request->input('email')]);
+        return view('auth.reset-password', compact('token'), ['email' => $request->input('email')]);
     }
 
     public function updatePassword(ResetPasswordRequest $request): RedirectResponse
