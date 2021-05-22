@@ -2,13 +2,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
-<script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-</body>
-</html>
-
 @extends('base')
 
 @section('body')
