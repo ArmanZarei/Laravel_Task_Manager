@@ -9,17 +9,18 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Http\RedirectResponse;
 
 class ForgotPasswordController extends Controller
 {
-    public function verify(EmailVerificationRequest $request)
+    public function verify(EmailVerificationRequest $request): RedirectResponse
     {
         $request->fulfill();
 
         return redirect()->route('tasks.index');
     }
 
-    public function forgotPassword(ForgotPasswordRequest $request)
+    public function forgotPassword(ForgotPasswordRequest $request): RedirectResponse
     {
         $status = Password::sendResetLink(
             $request->only('email')
@@ -35,7 +36,7 @@ class ForgotPasswordController extends Controller
         return view('reset-password', compact('token'), ['email' => $request->input('email')]);
     }
 
-    public function updatePassword(ResetPasswordRequest $request)
+    public function updatePassword(ResetPasswordRequest $request): RedirectResponse
     {
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
