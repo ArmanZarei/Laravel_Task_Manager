@@ -6,6 +6,7 @@ use App\Http\Requests\CreateTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -16,7 +17,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::orderBy('done')->orderBy('updated_at', 'DESC')->get();
+        $tasks = Auth::user()->tasks()->orderBy('done')->orderBy('updated_at', 'DESC')->get();
 
         return view('home', compact('tasks'));
     }
@@ -31,6 +32,7 @@ class TaskController extends Controller
     {
         $task = Task::create([
             'title' => $request->get('title'),
+            'user_id' => Auth::id(),
         ]);
 
         return response()->json($task);
