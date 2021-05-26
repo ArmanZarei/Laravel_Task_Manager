@@ -9,6 +9,9 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ route('tasks.index') }}">Home</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-warning" aria-current="page" href="#">{{ $menuComposerTest }}</a>
+                </li>
             </ul>
             <div>
                 @guest
